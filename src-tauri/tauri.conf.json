@@ -56,10 +56,10 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 600,
-        "resizable": true,
+        "height": 300,
+        "resizable": false,
         "title": "BPM Millis",
-        "width": 800
+        "width": 600
       }
     ]
   }
