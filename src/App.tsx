@@ -1,4 +1,4 @@
-import { Component, createSignal } from 'solid-js'
+import { Component, createSignal, For } from 'solid-js'
 import { Button } from './Button'
 
 const oneMinute = 60000
@@ -29,14 +29,18 @@ const App: Component = () => {
       <div class='flex place-content-center mt-5'>
         <div class='flex flex-col divide-y w-80'>
           <div class='flex place-content-center pb-2'>
-            {divisions.map(({ division }) => (
-              <p class='w-14 text-purple-gradient text-center'>{division}</p>
-            ))}
+            <For each={divisions}>
+              {({ division }) => (
+                <p class='w-14 text-purple-gradient text-center'>{division}</p>
+              )}
+            </For>
           </div>
           <div class='flex place-content-center pt-2'>
-            {divisions.map(({ value }) => (
-              <p class='w-14 text-purple-gradient text-center'>{value()}</p>
-            ))}
+            <For each={divisions}>
+              {({ value }) => (
+                <p class='w-14 text-purple-gradient text-center'>{value()}</p>
+              )}
+            </For>
           </div>
         </div>
       </div>
