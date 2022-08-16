@@ -2,6 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.purple-gradient {
-  @apply bg-gradient-to-br from-purple-600 to-blue-500;
+.text-purple-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-br from-purple-600 to-blue-500;
 }

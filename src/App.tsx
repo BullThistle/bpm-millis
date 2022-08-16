@@ -9,27 +9,38 @@ const App: Component = () => {
   const increment = () => setBpm(bpm() + 1)
   const decrement = () => setBpm(bpm() - 1)
 
-  const oneBeat = () => Math.round(oneMinute / bpm())
+  const oneBeat = () => oneMinute / bpm()
+
+  const divisions = [
+    { division: '1/1', value: () => Math.round(oneBeat()) },
+    { division: '1/2', value: () => Math.round(oneBeat() / 2) },
+    { division: '1/4', value: () => Math.round(oneBeat() / 4) },
+    { division: '1/8', value: () => Math.round(oneBeat() / 8) },
+    { division: '1/16', value: () => Math.round(oneBeat() / 16) }
+  ]
 
   return (
-    <>
-      <div class='bg-gray-800 w-screen h-screen text-gray-100 p-4'>
-        <p class='text-4xl text-green-700 text-center py-20'>BPM Millis</p>
-        <p class='text-4xl text-green-700 text-center'>{bpm()}</p>
-        <p class='text-4xl text-green-700 text-center'>{`one beat ${oneBeat()}`}</p>
-        <p class='text-4xl text-green-700 text-center'>{`half beat ${Math.round(
-          oneBeat() / 2
-        )}`}</p>
-        <p class='text-4xl text-green-700 text-center'>{`quarter beat ${Math.round(
-          oneBeat() / 4
-        )}`}</p>
-        <p class='text-4xl text-green-700 text-center'>{`eighth beat ${Math.round(
-          oneBeat() / 8
-        )}`}</p>
-        <Button symbol='+' onClick={increment} />
-        <Button symbol='-' onClick={decrement} />
+    <div class='bg-black w-screen h-screen'>
+      <div class='flex place-content-center items-center pt-5'>
+        <Button symbol='↓' onClick={decrement} />
+        <p class='text-purple-gradient text-center w-9'>{bpm()}</p>
+        <Button symbol='↑' onClick={increment} />
       </div>
-    </>
+      <div class='flex place-content-center mt-5'>
+        <div class='flex flex-col divide-y w-80'>
+          <div class='flex place-content-center pb-2'>
+            {divisions.map(({ division }) => (
+              <p class='w-14 text-purple-gradient text-center'>{division}</p>
+            ))}
+          </div>
+          <div class='flex place-content-center pt-2'>
+            {divisions.map(({ value }) => (
+              <p class='w-14 text-purple-gradient text-center'>{value()}</p>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }
 
