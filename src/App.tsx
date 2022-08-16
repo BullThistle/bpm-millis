@@ -20,25 +20,25 @@ const App: Component = () => {
   ]
 
   return (
-    <div class='bg-black w-screen h-screen'>
+    <div class='h-screen w-screen bg-black'>
       <div class='flex place-content-center items-center pt-5'>
         <Button symbol='↓' onClick={decrement} />
-        <p class='text-purple-gradient text-center w-9'>{bpm()}</p>
+        <p class='text-purple-gradient w-9 text-center'>{bpm()}</p>
         <Button symbol='↑' onClick={increment} />
       </div>
-      <div class='flex place-content-center mt-5'>
-        <div class='flex flex-col divide-y w-80'>
+      <div class='mt-5 flex place-content-center'>
+        <div class='flex w-80 flex-col divide-y'>
           <div class='flex place-content-center pb-2'>
             <For each={divisions}>
               {({ division }) => (
-                <p class='w-14 text-purple-gradient text-center'>{division}</p>
+                <p class='text-purple-gradient w-14 text-center'>{division}</p>
               )}
             </For>
           </div>
           <div class='flex place-content-center pt-2'>
             <For each={divisions}>
               {({ value }) => (
-                <p class='w-14 text-purple-gradient text-center'>{value()}</p>
+                <p class='text-purple-gradient w-14 text-center'>{value()}</p>
               )}
             </For>
           </div>

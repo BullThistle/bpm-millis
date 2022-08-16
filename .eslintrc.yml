@@ -1,7 +1,12 @@
 env:
   browser: true
   es2021: true
-extends: ['standard-with-typescript', 'plugin:solid/recommended']
+extends:
+  [
+    'standard-with-typescript',
+    'plugin:solid/recommended',
+    'plugin:tailwindcss/recommended'
+  ]
 overrides: []
 parserOptions:
   ecmaVersion: latest
