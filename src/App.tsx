@@ -3,14 +3,20 @@ import { Component, createSignal, For } from 'solid-js'
 const App: Component = () => {
   const [bpm, setBpm] = createSignal(130)
 
-  const divideBy = (division: number) => Math.round(60000 / bpm() / division)
+  const divideBy = (division: number, triplet: boolean = false) =>
+    Math.round((240000 / bpm() / division) * (triplet ? 0.75 : 1))
 
   const divisions = () => [
     { division: '1/1', value: divideBy(1) },
+    { division: '1/1D', value: divideBy(1, true) },
     { division: '1/2', value: divideBy(2) },
+    { division: '1/2D', value: divideBy(2, true) },
     { division: '1/4', value: divideBy(4) },
+    { division: '1/4D', value: divideBy(4, true) },
     { division: '1/8', value: divideBy(8) },
-    { division: '1/16', value: divideBy(16) }
+    { division: '1/8D', value: divideBy(8, true) },
+    { division: '1/16', value: divideBy(16) },
+    { division: '1/16D', value: divideBy(16, true) }
   ]
 
   const increment = () => setBpm(bpm() + 1)
@@ -39,7 +45,7 @@ const App: Component = () => {
           <div class='flex place-content-center pb-2'>
             <For each={divisions()}>
               {({ division }) => (
-                <p class='text-purple-gradient w-20 text-center'>{division}</p>
+                <p class='text-purple-gradient w-14 text-center'>{division}</p>
               )}
             </For>
           </div>
@@ -47,7 +53,7 @@ const App: Component = () => {
             <div class='mb-0 flex h-32 bg-black pt-2.5'>
               <For each={divisions()}>
                 {({ value }) => (
-                  <p class='text-purple-gradient w-20 text-center'>{value}</p>
+                  <p class='text-purple-gradient w-14 text-center'>{value}</p>
                 )}
               </For>
             </div>
