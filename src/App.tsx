@@ -3,7 +3,7 @@ import { Component, createSignal, For } from 'solid-js'
 const App: Component = () => {
   const [bpm, setBpm] = createSignal(130)
 
-  const divideBy = (division: number) => (60000 / bpm() / division).toFixed(2)
+  const divideBy = (division: number) => Math.round(60000 / bpm() / division)
 
   const divisions = () => [
     { division: '1/1', value: divideBy(1) },
@@ -18,8 +18,8 @@ const App: Component = () => {
 
   return (
     <div class='h-screen w-screen bg-black'>
-      <div class='flex place-content-center items-center pt-5'>
-        <button onClick={decrement} class='text-purple-gradient w-6'>
+      <div class='text-purple-gradient flex place-content-center items-center pt-5'>
+        <button onClick={decrement} class='w-6'>
           ↓
         </button>
         <input
@@ -30,12 +30,12 @@ const App: Component = () => {
           onChange={e => setBpm(parseInt(e.currentTarget.value))}
           class='text-purple-gradient w-9 appearance-none bg-black text-center outline-none'
         />
-        <button onClick={increment} class='text-purple-gradient w-6'>
+        <button onClick={increment} class='w-6'>
           ↑
         </button>
       </div>
-      <div class='mt-5 flex place-content-center'>
-        <div class='flex w-80 flex-col divide-y'>
+      <div class='flex place-content-center pt-5'>
+        <div class='flex flex-col'>
           <div class='flex place-content-center pb-2'>
             <For each={divisions()}>
               {({ division }) => (
@@ -43,12 +43,14 @@ const App: Component = () => {
               )}
             </For>
           </div>
-          <div class='flex place-content-center pt-2'>
-            <For each={divisions()}>
-              {({ value }) => (
-                <p class='text-purple-gradient w-20 text-center'>{value}</p>
-              )}
-            </For>
+          <div class='mt-1 flex place-content-center bg-gradient-to-r  from-[#6EE7B7] pt-0.5'>
+            <div class='mb-0 flex h-32 bg-black pt-2.5'>
+              <For each={divisions()}>
+                {({ value }) => (
+                  <p class='text-purple-gradient w-20 text-center'>{value}</p>
+                )}
+              </For>
+            </div>
           </div>
         </div>
       </div>
