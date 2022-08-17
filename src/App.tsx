@@ -3,8 +3,8 @@ import { Component, createSignal, For } from 'solid-js'
 const App: Component = () => {
   const [bpm, setBpm] = createSignal(130)
 
-  const divideBy = (division: number, triplet: boolean = false) =>
-    Math.round((240000 / bpm() / division) * (triplet ? 0.75 : 1))
+  const divideBy = (division: number, dotted: boolean = false) =>
+    Math.round((240000 / bpm() / division) * (dotted ? 0.75 : 1))
 
   const divisions = () => [
     { division: '1/1', value: divideBy(1) },
