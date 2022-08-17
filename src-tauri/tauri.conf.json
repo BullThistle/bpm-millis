@@ -56,7 +56,7 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 300,
+        "height": 200,
         "resizable": false,
         "title": "BPM Millis",
         "width": 600

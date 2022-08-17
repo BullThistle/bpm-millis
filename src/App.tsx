@@ -23,7 +23,7 @@ const App: Component = () => {
   const decrement = () => setBpm(bpm() - 1)
 
   return (
-    <div class='h-screen w-screen bg-black'>
+    <div class='h-screen w-screen overflow-hidden bg-black'>
       <div class='text-purple-gradient flex place-content-center items-center pt-5'>
         <button onClick={decrement} class='w-6'>
           ↓
