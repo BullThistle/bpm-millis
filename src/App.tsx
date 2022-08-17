@@ -22,7 +22,14 @@ const App: Component = () => {
         <button onClick={decrement} class='text-purple-gradient w-6'>
           ↓
         </button>
-        <p class='text-purple-gradient w-9 text-center'>{bpm()}</p>
+        <input
+          value={bpm()}
+          min={20}
+          max={200}
+          type='number'
+          onChange={e => setBpm(parseInt(e.currentTarget.value))}
+          class='text-purple-gradient w-9 appearance-none bg-black text-center outline-none'
+        />
         <button onClick={increment} class='text-purple-gradient w-6'>
           ↑
         </button>
@@ -32,14 +39,14 @@ const App: Component = () => {
           <div class='flex place-content-center pb-2'>
             <For each={divisions()}>
               {({ division }) => (
-                <p class='text-purple-gradient w-14 text-center'>{division}</p>
+                <p class='text-purple-gradient w-20 text-center'>{division}</p>
               )}
             </For>
           </div>
           <div class='flex place-content-center pt-2'>
             <For each={divisions()}>
               {({ value }) => (
-                <p class='text-purple-gradient w-14 text-center'>{value}</p>
+                <p class='text-purple-gradient w-20 text-center'>{value}</p>
               )}
             </For>
           </div>
