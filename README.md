@@ -12,6 +12,9 @@ A Tauri/SolidJS cross platform desktop app for calculating beat divisions from a
 
 ## Getting Started:
 
+If you don't have Tauri set up on your machine make sure you go through the setup
+https://tauri.app/v1/guides/getting-started/prerequisites
+
 ```bash
 pnpm install
 pnpm run tauri dev
